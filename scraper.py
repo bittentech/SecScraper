@@ -42,7 +42,7 @@ def do_hackerone():
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, request.headers))
 
-if(type == 'medium'):
+if(type.lower() == 'medium'):
     do_medium()
-else:
+elif(type.lower() == 'hackerone'):
     do_hackerone()
