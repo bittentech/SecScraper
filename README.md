@@ -1,0 +1,38 @@
+# SecScraper
+
+Reports and articles scraper for bug bounty hunters.
+
+The script will fetch the article links for you, based on your query. Enter anything you want to search, whether a vulnerability description, or abug writeup on Medium, or a public report on Hackerone, this tool will scrape everything relevant detail for you, with the specified result count.
+
+## Usage
+
+You need to have Python version 3.4+
+
+```bash
+pip install python3
+```
+
+Syntax: 
+```bash
+scraper.py -t TYPE -q QUERY -c [COUNT]
+```
+Type: The platform where the content need to be searched
+
+Current options for type:
+1. Medium
+2. Hackerone
+
+Query: The string to search, for e.g., "sql injection", "file upload", "graphql", etc.
+
+Count: The result count to fetch, for e.g., number of articles/reports
+
+Examples: 
+```bash
+scraper.py -t medium -q "sql injection"
+
+scraper.py -t hackerone -q "authentication bypass" -c 50
+```
+Please make sure to update tests as appropriate.
+
+## License
+[GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html)
