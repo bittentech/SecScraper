@@ -11,6 +11,13 @@ You need to have Python version 3.4+
 ```bash
 pip install python3
 ```
+Downlaoding and setting up the tool:
+
+```bash
+git clone https://github.com/bittentech/SecScraper.git
+cd SecScraper
+pip3 install -r requirements.txt
+```
 
 Syntax: 
 ```bash
@@ -24,7 +31,7 @@ Current options for type:
 
 Query: The string to search, for e.g., "sql injection", "file upload", "graphql", etc.
 
-Count: The result count to fetch, for e.g., number of articles/reports
+Count: The result count to fetch, for e.g., number of articles/reports (defaut: 10)
 
 Examples: 
 ```bash
