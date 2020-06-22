@@ -9,7 +9,7 @@ The script will fetch the article links for you, based on your query. Enter anyt
 You need to have Python version 3.4+
 
 ```bash
-pip install python3
+sudo apt-get install python3
 ```
 Downlaoding and setting up the tool:
 
