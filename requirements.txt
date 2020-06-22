@@ -2,3 +2,5 @@ bs4
 requests
 urllib
 argparse
+terminal_banner
+termcolor
