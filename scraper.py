@@ -23,7 +23,7 @@ if (platform.system() == 'Linux'):
     os.system('clear')
 
 banner = terminal_banner.Banner(banner_text)
-print(termcolor.colored(banner.text,'cyan', attrs= ['blink']), end="")
+print(termcolor.colored(banner.text,'cyan'), end="")
 print(termcolor.colored(desc,'white', attrs=['bold']), end = "")
 print(termcolor.colored(dev_info,'yellow'))
 
