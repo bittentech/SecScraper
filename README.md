@@ -21,7 +21,7 @@ pip3 install -r requirements.txt
 
 Syntax: 
 ```bash
-scraper.py -t TYPE -q QUERY -c [COUNT]
+scraper.py -t TYPE -q QUERY -c [COUNT] -o [OUTPUT_FILE]
 ```
 Type: The platform where the content need to be searched
 
@@ -33,11 +33,15 @@ Query: The string to search, for e.g., "sql injection", "file upload", "graphql"
 
 Count: The result count to fetch, for e.g., number of articles/reports (defaut: 10)
 
+Output: Save the scan results in the specified file
+
 Examples: 
 ```bash
 scraper.py -t medium -q "sql injection"
 
 scraper.py -t hackerone -q "authentication bypass" -c 50
+
+scraper.py -t hackerone -q "authentication bypass" -c 50 -o /tmp/output.txt
 ```
 Please make sure to update tests as appropriate.
 
