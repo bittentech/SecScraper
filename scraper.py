@@ -34,7 +34,7 @@ def create_url(query, count='10'):
 def do_medium():
     global op
     create_url(query, count)
-    print("[+] Finding %s articles on medium..." %count)
+    print("[+] Finding atmost %s articles on medium..." %count)
     page = requests.get(url)
 
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -44,7 +44,10 @@ def do_medium():
     for divs in soup.find_all('div', class_='postArticle-content'):
         for anchors in divs.find_all('a'):
             for h3 in anchors.find_all('h3'):
-                op += "-"*70 + "\n" + h3.contents[0] + ": " + anchors['href'] + "\n"
+                try:
+                    op += "-"*70 + "\n" + h3.contents[0] + ": " + anchors['href'] + "\n"
+                except:
+                    pass
     print(op)
 
 argp = argparse.ArgumentParser(usage = "scraper.py -t TYPE -q QUERY -c [COUNT]")
@@ -68,7 +71,7 @@ def do_hackerone():
     """ % (query, int(count))
     #print(query)
 
-    print("[+] Finding %s public reports on Hackerone..." %count)
+    print("[+] Finding atmost %s public reports on Hackerone..." %count)
     headers = {"content-type": "application/json"}
     request = requests.post('https://hackerone.com/graphql', data=query_ql, headers=headers)
     if request.status_code == 200:
@@ -76,7 +79,10 @@ def do_hackerone():
         print("[+] Listing reports...")
         json_response = json.loads(json.dumps(request.json()))
         for i in range(len(json_response['data']['hacktivity_items']['edges'])):
-            op +=  "-"*70 + "\n" + json_response['data']['hacktivity_items']['edges'][i]['node']['report']['title'] +": " + json_response['data']['hacktivity_items']['edges'][i]['node']['report']['url'] + "\n"
+            try:
+                op +=  "-"*70 + "\n" + json_response['data']['hacktivity_items']['edges'][i]['node']['report']['title'] +": " + json_response['data']['hacktivity_items']['edges'][i]['node']['report']['url'] + "\n"
+            except:
+                pass
         print(op)
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, request.headers))
