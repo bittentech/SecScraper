@@ -4,6 +4,8 @@ Reports and articles scraper for bug bounty hunters.
 
 The script will fetch the article links for you, based on your query. Enter anything you want to search, whether a vulnerability description, or abug writeup on Medium, or a public report on Hackerone, this tool will scrape everything relevant detail for you, with the specified result count.
 
+![SecScraper Demo](secscraper.gif)
+
 ## Usage
 
 You need to have Python version 3.4+
