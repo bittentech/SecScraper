@@ -43,7 +43,7 @@ python3 scraper.py -t hackerone -q "authentication bypass" -c 50
 
 python3 scraper.py -t hackerone -q "authentication bypass" -c 50 -o /tmp/output.txt
 ```
-Please make sure to update tests as appropriate.
+Please report functionality issues and bugs if found.
 
 ## License
 [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html)
