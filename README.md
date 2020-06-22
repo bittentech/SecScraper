@@ -37,11 +37,11 @@ Output: Save the scan results in the specified file
 
 Examples: 
 ```bash
-scraper.py -t medium -q "sql injection"
+python3 scraper.py -t medium -q "sql injection"
 
-scraper.py -t hackerone -q "authentication bypass" -c 50
+python3 scraper.py -t hackerone -q "authentication bypass" -c 50
 
-scraper.py -t hackerone -q "authentication bypass" -c 50 -o /tmp/output.txt
+python3 scraper.py -t hackerone -q "authentication bypass" -c 50 -o /tmp/output.txt
 ```
 Please make sure to update tests as appropriate.
 
