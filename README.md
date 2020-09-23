@@ -2,7 +2,7 @@
 
 Reports and articles scraper for bug bounty hunters.
 
-The script will fetch the article links for you, based on your query. Enter anything you want to search, whether a vulnerability description, or abug writeup on Medium, or a public report on Hackerone, this tool will scrape everything relevant detail for you, with the specified result count.
+The script will fetch the article links for you, based on your query. Enter anything you want to search, whether a vulnerability description, or a bug writeup on Medium, or a public report on Hackerone, this tool will scrape everything relevant for you, with the specified result count.
 
 ![SecScraper Demo](secscraper.gif)
 
@@ -13,7 +13,7 @@ You need to have Python version 3.4+
 ```bash
 sudo apt-get install python3
 ```
-Downlaoding and setting up the tool:
+Downloading and setting up the tool:
 
 ```bash
 git clone https://github.com/bittentech/SecScraper.git
@@ -25,7 +25,7 @@ Syntax:
 ```bash
 scraper.py -t TYPE -q QUERY -c [COUNT] -o [OUTPUT_FILE]
 ```
-Type: The platform where the content need to be searched
+Type: The platform where the content needs to be searched
 
 Current options for type:
 1. Medium
@@ -33,7 +33,7 @@ Current options for type:
 
 Query: The string to search, for e.g., "sql injection", "file upload", "graphql", etc.
 
-Count: The result count to fetch, for e.g., number of articles/reports (defaut: 10)
+Count: The result count to fetch, for e.g., number of articles/reports (default: 10)
 
 Output: Save the scan results in the specified file
 
