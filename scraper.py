@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 import requests, urllib, os, json, argparse
 import terminal_banner, termcolor, platform, datetime
 
+
+#For interface
+
 op = ''
 
 banner_text = """
@@ -30,6 +33,9 @@ print(termcolor.colored(dev_info,'yellow'))
 def create_url(query, count='10'):
     global url
     url = "https://medium.com/search/posts?q="+urllib.parse.quote(query)+"&count="+count
+
+    
+#Finding public writeups from Medium
 
 def do_medium():
     global op
@@ -62,6 +68,9 @@ count = parser.count
 output = parser.output
 if(count == None): count = '10'
 
+    
+#Finding public reports from Hackerone
+
 def do_hackerone():
 
     global query
@@ -91,6 +100,9 @@ if(type == 'medium'):
     do_medium()
 else:
     do_hackerone()
+    
+   
+#Output formatting
 
 if(output):
     try:
