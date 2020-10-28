@@ -75,9 +75,15 @@ def do_hackerone():
     headers = {"content-type": "application/json"}
     request = requests.post('https://hackerone.com/graphql', data=query_ql, headers=headers)
     if request.status_code == 200:
-        print("[+] FOUND")
-        print("[+] Listing reports...")
+
         json_response = json.loads(json.dumps(request.json()))
+        
+        if not len(json_response['data']['hacktivity_items']['edges']):
+            print("[-] No data retrieved.")
+            exit()
+
+        print("[+] Listing reports...")
+        
         for i in range(len(json_response['data']['hacktivity_items']['edges'])):
             try:
                 op +=  "-"*70 + "\n" + json_response['data']['hacktivity_items']['edges'][i]['node']['report']['title'] +": " + json_response['data']['hacktivity_items']['edges'][i]['node']['report']['url'] + "\n"
