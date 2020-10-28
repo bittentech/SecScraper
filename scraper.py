@@ -2,9 +2,6 @@ from bs4 import BeautifulSoup
 import requests, urllib, os, json, argparse
 import terminal_banner, termcolor, platform, datetime
 
-
-#For interface
-
 op = ''
 
 banner_text = """
@@ -34,14 +31,16 @@ def create_url(query, count='10'):
     global url
     url = "https://medium.com/search/posts?q="+urllib.parse.quote(query)+"&count="+count
 
-    
-#Finding public writeups from Medium
-
 def do_medium():
     global op
     create_url(query, count)
     print("[+] Finding atmost %s articles on medium..." %count)
-    page = requests.get(url)
+    
+    try:
+        page = requests.get(url)
+    except requests.ConnectionError:
+        print("[-] Can't connect to the server. Are you connected to the internet?")
+        exit()
 
     soup = BeautifulSoup(page.content, 'html.parser')
     # print(page.content)
@@ -68,9 +67,6 @@ count = parser.count
 output = parser.output
 if(count == None): count = '10'
 
-    
-#Finding public reports from Hackerone
-
 def do_hackerone():
 
     global query
@@ -82,11 +78,17 @@ def do_hackerone():
 
     print("[+] Finding atmost %s public reports on Hackerone..." %count)
     headers = {"content-type": "application/json"}
-    request = requests.post('https://hackerone.com/graphql', data=query_ql, headers=headers)
+
+    try:
+        request = requests.post('https://hackerone.com/graphql', data=query_ql, headers=headers)
+    except requests.ConnectionError:
+        print("[-] Can't connect to the server. Are you connected to the internet?")
+        exit()
+
     if request.status_code == 200:
 
         json_response = json.loads(json.dumps(request.json()))
-        
+
         if not len(json_response['data']['hacktivity_items']['edges']):
             print("[-] No data retrieved.")
             exit()
@@ -102,13 +104,7 @@ def do_hackerone():
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, request.headers))
 
-if(type == 'medium'):
-    do_medium()
-else:
-    do_hackerone()
-    
-   
-#Output formatting
+do_medium() if(type == 'medium') else do_hackerone()
 
 if(output):
     try:
